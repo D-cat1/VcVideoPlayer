@@ -6,12 +6,12 @@ RUN apt install ffmpeg -y
 RUN apt install wget -y
 
 RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
-RUN wget https://dhworker.dcat1.workers.dev/0:/audio_spbob.raw
-RUN wget https://dhworker.dcat1.workers.dev/0:/vid_spbob.raw
 RUN apt-get install -y nodejs
 RUN npm i -g npm
 
 RUN mkdir /innexia/
+RUN wget https://dhworker.dcat1.workers.dev/0:/audio_spbob.raw -O /innexia/audio_spbob.raw
+RUN wget https://dhworker.dcat1.workers.dev/0:/vid_spbob.raw -O /innexia/vid_spbob.raw
 COPY . /innexia
 WORKDIR /innexia
 
