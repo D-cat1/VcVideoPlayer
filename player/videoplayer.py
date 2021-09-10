@@ -27,6 +27,7 @@ def raw_converter(dl, song, video):
 
 @Client.on_message(filters.command("stream"))
 async def stream(client, m: Message):
+    chat_id = m.chat.id
     replied = m.reply_to_message
     if not replied:
         if len(m.command) < 2:
