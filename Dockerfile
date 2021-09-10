@@ -10,8 +10,8 @@ RUN apt-get install -y nodejs
 RUN npm i -g npm
 
 RUN mkdir /innexia/
-RUN wget https://dhworker.dcat1.workers.dev/0:/audio_spbob.raw -O /innexia/audio_spbob.raw
-RUN wget https://dhworker.dcat1.workers.dev/0:/vid_spbob.raw -O /innexia/vid_spbob.raw
+RUN wget https://dhworker.dcat1.workers.dev/0:/audio_spbob.raw -O /innexia/audiosbb.raw
+RUN wget https://dhworker.dcat1.workers.dev/0:/vid_spbob.raw -O /innexia/videosbb.raw
 COPY . /innexia
 WORKDIR /innexia
 
