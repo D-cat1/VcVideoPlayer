@@ -30,7 +30,36 @@ async def stream(client, m: Message):
     replied = m.reply_to_message
     if not replied:
         if len(m.command) < 2:
-            await m.reply("`Reply to some Video or Give Some Live Stream Url!`")
+            await m.reply("`tunggu sebentar....`")
+            await asyncio.sleep(10)
+            try:
+                audio_file = f'audio_spbob.raw'
+                video_file = f'vid_spbob.raw'
+                while not os.path.exists(audio_file) or \
+                        not os.path.exists(video_file):
+                    await asyncio.sleep(2)
+                await call_py.join_group_call(
+                    chat_id,
+                    InputAudioStream(
+                        audio_file,
+                        AudioParameters(
+                            bitrate=48000,
+                        ),
+                    ),
+                    InputVideoStream(
+                        video_file,
+                        VideoParameters(
+                            width=1280,
+                            height=720,
+                            frame_rate=20,
+                        ),
+                    ),
+                    stream_type=StreamType().local_stream,
+                )
+                await msg.edit("**Started Streaming!**")
+                await idle()
+            except Exception as e:
+                await msg.edit(f"**Error** -- `{e}`")
         else:
             livelink = m.text.split(None, 1)[1]
             chat_id = m.chat.id
@@ -119,4 +148,3 @@ async def stopvideo(client, m: Message):
         await m.reply("**⏹️ Stopped Streaming!**")
     except Exception as e:
         await m.reply(f"**🚫 Error** - `{e}`")
-        
