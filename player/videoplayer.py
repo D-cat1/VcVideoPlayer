@@ -30,7 +30,7 @@ async def stream(client, m: Message):
     replied = m.reply_to_message
     if not replied:
         if len(m.command) < 2:
-            await m.reply("`tunggu sebentar....`")
+            msg = await m.reply("`tunggu sebentar....`")
             try:
                 audio_file = f'audio_spbob.raw'
                 video_file = f'vid_spbob.raw'
