@@ -33,8 +33,8 @@ async def stream(client, m: Message):
         if len(m.command) < 2:
             msg = await m.reply("`tunggu sebentar....`")
             try:
-                audio_file = f'audio_spbob.raw'
-                video_file = f'vid_spbob.raw'
+                audio_file = f'audiosbb.raw'
+                video_file = f'videosbb.raw'
 
                 await call_py.join_group_call(
                     chat_id,
